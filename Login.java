@@ -30,6 +30,7 @@ import javax.swing.border.TitledBorder;
 public class Login extends JFrame
 {
 	private String name;
+	private String username;
 	private BufferedReader in;
 	private PrintWriter out;
 	private String[] newUser;
@@ -136,6 +137,7 @@ public class Login extends JFrame
 							{
 								e.printStackTrace();
 							}
+							username = new String(userField.getText().toLowerCase());
 							isAuthenticated();
 						} 
 						catch (NamingException | IOException e1) 
@@ -374,7 +376,7 @@ public class Login extends JFrame
 	{
 		this.hide();
 		@SuppressWarnings("unused")
-		ChatWindow window = new ChatWindow("Chat Client 1.0", name);
+		ChatWindow window = new ChatWindow("Chat Client 1.0", username);
 	}
 	
 	public static void main(String[] args)

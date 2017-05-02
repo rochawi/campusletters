@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -231,7 +233,8 @@ public class ChatWindow extends JFrame
 	
 	private void createInputPane()
 	{
-		input = new JTextArea();
+		input = new JTextArea("Type Here...");
+		input.setForeground(Color.GRAY);
 		input.addKeyListener(new KeyListener() 
 		{
 			@Override
@@ -243,12 +246,16 @@ public class ChatWindow extends JFrame
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
-				
+				if(input.getForeground().equals(Color.GRAY))
+				{
+					input.setText("");
+					input.setForeground(Color.BLACK);
+				}
 			}
 
 			@Override
 			public void keyReleased(KeyEvent e) 
-			{
+			{	
 				if(e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
 					String temp = input.getText();
@@ -257,9 +264,51 @@ public class ChatWindow extends JFrame
 					out.println(temp);
 					input.setText("");
 				}
+				if(input.getText().equals(""))
+				{
+					input.setForeground(Color.GRAY);
+					input.setText("Type Here...");
+					input.setCaretPosition(0);
+				}
+			}
+		});
+		input.addMouseListener(new MouseListener() 
+		{
+			@Override
+			public void mouseClicked(MouseEvent e) 
+			{
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) 
+			{
+				if(input.getForeground().equals(Color.GRAY))
+				{
+					input.setCaretPosition(0);
+				}
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) 
+			{
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) 
+			{
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) 
+			{
+				
 			}
 		});
 		input.setEditable(false);
+		input.setCaretPosition(0);
 		input.setLineWrap(true);
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 		input.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
@@ -351,7 +400,9 @@ public class ChatWindow extends JFrame
 							}
 							else
 							{
+								StyleConstants.setForeground(chatStyle, Color.DARK_GRAY);
 								doc.insertString(doc.getLength(), temp[0].substring(8), chatStyle);
+								StyleConstants.setForeground(chatStyle, Color.GRAY);
 							}
 						} 
 						catch (BadLocationException e) 
