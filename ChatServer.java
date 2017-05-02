@@ -9,6 +9,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 
+/**
+ * 
+ * Modified version of: http://cs.lmu.edu/~ray/notes/javanetexamples/
+ *
+ */
 public class ChatServer 
 {
     private static final int PORT = 3388;
