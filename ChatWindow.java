@@ -126,10 +126,7 @@ public class ChatWindow extends JFrame
 				{
 					e.printStackTrace();
 				}
-				finally
-				{
-					frameDispose();
-				}
+				logoff();
 			}
 		});
 		file.add(logout);
@@ -460,10 +457,4 @@ public class ChatWindow extends JFrame
 		});  
 		t1.start();
 	}
-	/*
-	private void frameDispose()
-	{
-		this.dispose();
-	}
-	*/
 }

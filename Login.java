@@ -378,10 +378,4 @@ public class Login extends JFrame
 		@SuppressWarnings("unused")
 		ChatWindow window = new ChatWindow("Chat Client 1.0", username);
 	}
-	
-	public static void main(String[] args)
-	{
-		@SuppressWarnings("unused")
-		Login test = new Login();
-	}
 }

@@ -3,6 +3,11 @@ import java.util.*;
 import javax.naming.*;
 import javax.naming.directory.*;
  
+/**
+ * 
+ * Modified version of: https://venkatsadasivam.com/2014/01/03/java-sample-active-directory-authentication-code/
+ *
+ */
 public final class ActiveDirectoryAuthenticate {
  
     private final String MASTER_USER_DN;
