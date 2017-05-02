@@ -322,8 +322,8 @@ public class ChatWindow extends JFrame
 		
 		doc = output.getStyledDocument();
 		systemStyle = new SimpleAttributeSet();
-		StyleConstants.setForeground(systemStyle, Color.RED);
-		StyleConstants.setBackground(systemStyle, Color.YELLOW);
+		StyleConstants.setForeground(systemStyle, Color.decode("0x841617"));
+		//StyleConstants.setBackground(systemStyle, Color.decode("0xFDF9D8"));
 		StyleConstants.setBold(systemStyle, true);
 		userStyle = new SimpleAttributeSet();
 		StyleConstants.setForeground(userStyle, Color.BLUE);
