@@ -55,6 +55,7 @@ public class ChatWindow extends JFrame
 	private SimpleAttributeSet chatStyle;
 	private HashSet<String> names = new HashSet<String>();
 	private DefaultListModel<String> listModel;
+	private JList<String> chatRoomList;
 
 	public ChatWindow()
 	{
@@ -207,8 +208,9 @@ public class ChatWindow extends JFrame
 		
 		listModel = new DefaultListModel<String>();
 		
-		JList<String> chatRoomList = new JList<String>(listModel);
+		chatRoomList = new JList<String>(listModel);
 		chatRoomList.setFont(new Font(getName(), Font.BOLD, 20));
+		chatRoomList.setEnabled(false);
 		
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 		chatRoomList.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
@@ -445,6 +447,7 @@ public class ChatWindow extends JFrame
 							names.add(line.substring(5));
 							listModel.addElement(line.substring(5));
 							System.out.println(line.substring(5));
+							chatRoomList.setSelectedValue(username, true);
 						}
 					}
 					else if (line.startsWith("REMOVE"))
