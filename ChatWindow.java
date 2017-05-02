@@ -92,7 +92,7 @@ public class ChatWindow extends JFrame
 		GridBagLayout gridbag = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		panel.setLayout(gridbag);
-		panel.setBackground(Color.decode("0xFDF9D8"));
+		//panel.setBackground(Color.decode("0xFDF9D8"));
 		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
