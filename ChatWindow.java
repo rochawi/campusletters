@@ -27,6 +27,7 @@ import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -113,28 +114,23 @@ public class ChatWindow extends JFrame
 				System.exit(0);
 			}
 		});
-		/*
-		JMenuItem logout = new JMenuItem("Logout");
-		logout.addActionListener(new ActionListener() 
+		JMenu help = new JMenu("Help");
+		JMenuItem about = new JMenuItem("About");
+		about.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				try 
-				{
-					socket.close();
-				} 
-				catch (IOException e) 
-				{
-					e.printStackTrace();
-				}
-				logoff();
+				JFrame frame = new JFrame();
+				JOptionPane.showMessageDialog(frame, "1. To start using Campus Letters, simply start typing in the text area at the bottom of"
+						+ "\n    the screen and press enter when you want to send it to the chatroom.\n2. All active users will appear on the list at the"
+						+ "right, with your username highlighted in blue. \n"
+						+ "3. History is saved, so when you exit and log back in, all of the previous conversations will be there!");
 			}
 		});
-		file.add(logout);
-		*/
+		help.add(about);
 		file.add(exit);
 		menuBar.add(file);
-		
+		menuBar.add(help);
 		
 		ImageIcon icon = new ImageIcon(Login.class.getResource("/resources/cl.png"));
 		JLabel logo = new JLabel();
@@ -255,7 +251,7 @@ public class ChatWindow extends JFrame
 			@Override
 			public void keyReleased(KeyEvent e) 
 			{	
-				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+				if(e.getKeyCode() == KeyEvent.VK_ENTER && input.getForeground().equals(Color.BLACK))
 				{
 					String temp = input.getText();
 					temp = temp.replaceAll("\n", "");
